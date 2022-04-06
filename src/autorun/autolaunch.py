@@ -61,8 +61,8 @@ with open(os.path.join(autorun_path, "autorun.inf"), 'w') as filewrite:
 
     filewrite.write("""[autorun]\nopen={0}\nicon=autorun.ico""".format(payload))
 
-core.print_status("Your attack has been created in the SET home directory (/root/.!ntoolkit/) folder 'autorun'")
-core.print_status("Note a backup copy of template.pdf is also in /root/.!ntoolkit/template.pdf if needed.")
+core.print_status("Your attack has been created in the SET home directory (/root/.intoolkit/) folder 'autorun'")
+core.print_status("Note a backup copy of template.pdf is also in /root/.intoolkit/template.pdf if needed.")
 core.print_info("Copy the contents of the folder to a CD/DVD/USB to autorun")
 
 # if we want to launch payload and automatically create listener
