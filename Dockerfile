@@ -8,7 +8,7 @@ RUN git config --global user.name "YOUR NAME HERE" \
     && git config --global user.email "YOUR EMAIL HERE"
 
 # Clone SETOOLKIT
-RUN git clone --depth=1 https://github.com/Inj3ct0rHacker/!nj3ct0r-reverse-enginnering-toolkit.git
+RUN git clone --depth=1 https://github.com/Inj3ct0rHacker/Inj3ct0r-reverse-enginnering-toolkit.git
 
 # Change Working Directory
 WORKDIR /inj3ct0r-reverse-enginnering-toolkit
