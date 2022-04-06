@@ -9,15 +9,15 @@ import sys
 
 
 # check where we are and load default directory
-if os.path.isdir("/usr/share/Intoolkit"):
-    if not os.path.isfile("Intoolkit"):
-        os.chdir("/usr/share/Intoolkit")
-        sys.path.append("/usr/share/Intoolkit")
+if os.path.isdir("/usr/share/intoolkit"):
+    if not os.path.isfile("intoolkit"):
+        os.chdir("/usr/share/intoolkit")
+        sys.path.append("/usr/share/intoolkit")
 
 import src.core.setcore as core
 
 # if we can't see our config then something didn't go good..
-if not os.path.isfile("/etc/Intoolkit/intoolkit.config"):
+if not os.path.isfile("/etc/intoolkit/intoolkit.config"):
     core.print_error("Cannot locate intoolkit executable. Try running from the local directory.")
     core.print_error("If this does not work, please run the setup.py install file.")
     sys.exit()
@@ -28,7 +28,7 @@ try:
 
 # except keyboard interrupts
 except KeyboardInterrupt:
-    print("\n[!] Control-C detected. Exiting updating !ntoolkit.")
+    print("\n[!] Control-C detected. Exiting updating intoolkit.")
 
 # handle all other errors
 except Exception as e:
