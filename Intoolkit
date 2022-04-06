@@ -13,7 +13,7 @@ try:
 except NameError:
     pass
 
-# import main core functionality into SET
+# import main core functionality into intoolkit
 import src.core.setcore as core
 
 # check which operating system
@@ -31,37 +31,37 @@ if operating_system == "posix":
         core.exit_set()
 
 # if we are running in the path no need to change
-if os.path.isfile("setoolkit"):
+if os.path.isfile("intoolkit"):
     pass
 
 # check where we are and load default directory
-elif os.path.isdir("/usr/share/Intoolkit"):
-    if not os.path.isfile("Intoolkit"):
-        os.chdir("/usr/share/Intoolkit")
-    sys.path.append("/usr/share/Intoolkit")
+elif os.path.isdir("/usr/share/intoolkit"):
+    if not os.path.isfile("intoolkit"):
+        os.chdir("/usr/share/intoolkit")
+    sys.path.append("/usr/share/intoolkit")
 
 # check where we are and load default directory
-elif os.path.isdir("/usr/share/Intoolkit"):
-    if not os.path.isfile("Intoolkit"):
-        os.chdir("/usr/share/Intoolkit")
-        sys.path.append("/usr/share/Intoolkit")
+elif os.path.isdir("/usr/share/intoolkit"):
+    if not os.path.isfile("intoolkit"):
+        os.chdir("/usr/share/intoolkit")
+        sys.path.append("/usr/share/intoolkit")
 
-# make sure the config file is located in /etc/Intoolkit
-if not os.path.isdir("/etc/Intoolkit/"):
-    os.makedirs("/etc/Intoolkit/")
-    shutil.copyfile("src/core/config.baseline", "/etc/Intoolkit/intoolkit.config")
+# make sure the config file is located in /etc/intoolkit
+if not os.path.isdir("/etc/intoolkit/"):
+    os.makedirs("/etc/intoolkit/")
+    shutil.copyfile("src/core/config.baseline", "/etc/intoolkit/intoolkit.config")
 
 if not os.path.isfile("/etc/Intoolkit/set.config"):
-    shutil.copyfile("src/core/config.baseline", "/etc/Intoolkit/intoolkit.config")
+    shutil.copyfile("src/core/config.baseline", "/etc/intoolkit/intoolkit.config")
 
 # here we check to ensure we have the latest version
-with open("/etc/Intoolkit/intoolkit.config") as fileopen:
+with open("/etc/intoolkit/intoolkit.config") as fileopen:
     data = fileopen.read()
 
 if "CONFIG_VERSION=1.0.0" not in data:
-    print("[*] Overwriting old config for updates to SET. Backing up your old one in /etc/Intoolkit/")
-    shutil.move("/etc/Intoolkit/intoolkit.config", "/etc/Intoolkit/intoolkit.config.bak")
-    shutil.copyfile("src/core/config.baseline", "/etc/Intoolkit/intoolkit.config")
+    print("[*] Overwriting old config for updates to SET. Backing up your old one in /etc/intoolkit/")
+    shutil.move("/etc/intoolkit/intoolkit.config", "/etc/intoolkit/intoolkit.config.bak")
+    shutil.copyfile("src/core/config.baseline", "/etc/intoolkit/intoolkit.config")
 
 # import after config checks have been properly created
 from src.core.menu import text
@@ -76,15 +76,15 @@ if not os.path.isdir("src/logs/"):
     os.makedirs("src/logs/")
 
 # check set logfile
-if not os.path.isfile("src/logs/Intoolkit_logfile.log"):
+if not os.path.isfile("src/logs/intoolkit_logfile.log"):
     # create new log
-    with open("src/logs/Intoolkit_logfile.log", "w") as filewrite:
+    with open("src/logs/intoolkit_logfile.log", "w") as filewrite:
         filewrite.write("")
 
-# use ~/.!ntoolkit
+# use ~/.intoolkit
 if operating_system == "posix":
     if not os.path.isdir(core.userconfigpath):
-        # create the !ntoolkit variables
+        # create the intoolkit variables
         os.makedirs(core.userconfigpath)
         # if for some reason it failed to pull the path
         userdir = os.path.join(os.path.expanduser('~'), '.set')
@@ -151,7 +151,7 @@ for root, dirs, files in os.walk(core.userconfigpath):
             pass
 
 # if there isn't a set_config.py file yet, create one
-if not os.path.isfile("/etc/Intoolkit/intoolkit_config.py"):
+if not os.path.isfile("/etc/intoolkit/intoolkit_config.py"):
     update_config()
 
 define_version = core.get_version()
