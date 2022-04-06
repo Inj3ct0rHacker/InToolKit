@@ -22,16 +22,16 @@ except NameError:
     from importlib import reload
 
 # check where we are and load default directory
-if os.path.isdir("/usr/share//Intoolkit"):
-    if not os.path.isfile("/Intoolkit"):
-        os.chdir("/usr/share//Intoolkit")
-        sys.path.append("/usr/share//Intoolkit")
+if os.path.isdir("/usr/share//intoolkit"):
+    if not os.path.isfile("/intoolkit"):
+        os.chdir("/usr/share//intoolkit")
+        sys.path.append("/usr/share//intoolkit")
 
 import src.core.setcore as core
 
 # if we can't see our config then something didn't go good..
-if not os.path.isfile("/etc//Intoolkit/intoolkit.config"):
-    core.print_error("Cannot locate !ntoolkit executable. Try running from the local directory.")
+if not os.path.isfile("/etc//intoolkit/intoolkit.config"):
+    core.print_error("Cannot locate intoolkit executable. Try running from the local directory.")
     core.print_error("If this does not work, please run the setup.py install file.")
     sys.exit()
 
@@ -72,7 +72,7 @@ password = False
 # if the path is around
 if os.path.isfile(filename):
     try:
-        print("[*] Spawning !ntoolkit in a threaded process...")
+        print("[*] Spawning intoolkit in a threaded process...")
         cmd = find_executable('python3') or find_executable('python')
         child = pexpect.spawn("{} !ntoolkit".format(cmd))
         child.expect("99\) Exit the !nj3ct0r-Reverse-Engineer Toolkit")
