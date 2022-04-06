@@ -27,7 +27,7 @@ if operating_system == "posix":
 
     definepath = os.getcwd()
 
-    print("\n[*] Welcome to the !ntoolkit-Proxy Configuration Utility")
+    print("\n[*] Welcome to the intoolkit-Proxy Configuration Utility")
     print("\nEnter the proxy setting information below.\n\nExample: http://10.3.1.1:8080\n")
 
     try:
