@@ -58,10 +58,10 @@ except ImportError:
 
 def definepath():
     if check_os() == "posix":
-        if os.path.isfile("!ntoolkit"):
+        if os.path.isfile("intoolkit"):
             return os.getcwd()
         else:
-            return "/usr/share/!ntoolkit/"
+            return "/usr/share/intoolkit/"
 
     else:
         return os.getcwd()
@@ -277,7 +277,7 @@ def print_error(message):
 
 
 def get_version():
-    define_version = open("src/core/set.version", "r").read().rstrip()
+    define_version = open("src/core/intoolkit.version", "r").read().rstrip()
     # define_version = '7.2.3'
     return define_version
 
@@ -426,7 +426,7 @@ def meta_path():
 
 def meta_database():
     # DEFINE METASPLOIT PATH
-    meta_path = open("/etc/setoolkit/set.config", "r").readlines()
+    meta_path = open("/etc/intoolkit/intoolkit.config", "r").readlines()
     for line in meta_path:
         line = line.rstrip()
         match = re.search("METASPLOIT_DATABASE=", line)
@@ -772,7 +772,7 @@ def windows_root():
     return os.environ['WINDIR']
 
 #
-# core log file routine for SET
+# core log file routine for intoolkit
 #
 
 
@@ -780,15 +780,15 @@ def log(error):
     try:
         # open log file only if directory is present (may be out of directory
         # for some reason)
-        if not os.path.isfile("%s/src/logs/set_logfile.log" % (definepath())):
-            filewrite = open("%s/src/logs/set_logfile.log" %
+        if not os.path.isfile("%s/src/logs/intoolkit_logfile.log" % (definepath())):
+            filewrite = open("%s/src/logs/intoolkit_logfile.log" %
                              (definepath()), "w")
             filewrite.write("")
             filewrite.close()
-        if os.path.isfile("%s/src/logs/set_logfile.log" % (definepath())):
+        if os.path.isfile("%s/src/logs/intoolkit_logfile.log" % (definepath())):
             error = str(error)
             # open file for writing
-            filewrite = open("%s/src/logs/set_logfile.log" %
+            filewrite = open("%s/src/logs/intoolkit_logfile.log" %
                              (definepath()), "a")
             # write error message out
             filewrite.write("ERROR: " + date_time() + ": " + error + "\n")
@@ -803,7 +803,7 @@ def log(error):
 
 def upx(path_to_file):
     # open the set_config
-    fileopen = open("/etc/setoolkit/set.config", "r")
+    fileopen = open("/etc/intoolkit/intoolkit.config", "r")
     for line in fileopen:
         line = line.rstrip()
         match = re.search("UPX_PATH=", line)
@@ -857,22 +857,22 @@ def show_banner(define_version, graphic):
         os.system("clear")
 
     print(bcolors.BLUE + """
-[---]        The Social-Engineer Toolkit (""" + bcolors.YELLOW + """SET""" + bcolors.BLUE + """)         [---]
-[---]        Created by:""" + bcolors.RED + """ David Kennedy """ + bcolors.BLUE + """(""" + bcolors.YELLOW + """ReL1K""" + bcolors.BLUE + """)         [---]
+[---]        The !nj3ct0r-Reverse-Engineer Toolkit (""" + bcolors.YELLOW + """intoolkit""" + bcolors.BLUE + """)         [---]
+[---]        Created by:""" + bcolors.RED + """  """ + bcolors.BLUE + """(""" + bcolors.YELLOW + """ReL1K""" + bcolors.BLUE + """)         [---]
                       Version: """ + bcolors.RED + """%s""" % (define_version) + bcolors.BLUE + """
                     Codename: '""" + bcolors.YELLOW + """Maverick""" + bcolors.ENDC + bcolors.BLUE + """'
-[---]        Follow us on Twitter: """ + bcolors.PURPLE + """@TrustedSec""" + bcolors.BLUE + """         [---]
-[---]        Follow me on Twitter: """ + bcolors.PURPLE + """@HackingDave""" + bcolors.BLUE + """        [---]
-[---]       Homepage: """ + bcolors.YELLOW + """https://www.trustedsec.com""" + bcolors.BLUE + """       [---]
+[---]        Follow us on Twitter: """ + bcolors.PURPLE + """@""" + bcolors.BLUE + """         [---]
+[---]        Follow me on Twitter: """ + bcolors.PURPLE + """@""" + bcolors.BLUE + """        [---]
+[---]       Homepage: """ + bcolors.YELLOW + """""" + bcolors.BLUE + """       [---]
 """ + bcolors.GREEN + """        Welcome to the Social-Engineer Toolkit (SET).
          The one stop shop for all of your SE needs.
 """)
-    print(bcolors.BOLD + """   The Social-Engineer Toolkit is a product of TrustedSec.\n\n           Visit: """ +
-          bcolors.GREEN + """https://www.trustedsec.com\n""" + bcolors.ENDC)
+    print(bcolors.BOLD + """   The !nj3ct0r-Reverse-Engineer Toolkit is a product of !nj3ct0r.\n\n           Visit: """ +
+          bcolors.GREEN + """\n""" + bcolors.ENDC)
     print(bcolors.BLUE + """   It's easy to update using the PenTesters Framework! (PTF)\nVisit """ + bcolors.YELLOW +
-          """https://github.com/trustedsec/ptf""" + bcolors.BLUE + """ to update all your tools!\n\n""" + bcolors.ENDC)
+          """https://github.com/Inj3ct0rHacker/ptf""" + bcolors.BLUE + """ to update all your tools!\n\n""" + bcolors.ENDC)
 
-    # here we check if  there is a new version of SET - if there is, then
+    # here we check if  there is a new version of intoolkit - if there is, then
     # display a banner
     cv = get_version()
 
@@ -899,7 +899,7 @@ def show_banner(define_version, graphic):
 
             if cv != version:
                 if version != "":
-                    print(bcolors.RED + "          There is a new version of SET available.\n                    " + bcolors.GREEN + " Your version: " + bcolors.RED + cv + bcolors.GREEN +
+                    print(bcolors.RED + "          There is a new version of intoolkit available.\n                    " + bcolors.GREEN + " Your version: " + bcolors.RED + cv + bcolors.GREEN +
                           "\n                  Current version: " + bcolors.ENDC + bcolors.BOLD + version + bcolors.YELLOW + "\n\nPlease update SET to the latest before submitting any git issues.\n\n" + bcolors.ENDC)
 
         # why urllib and sockets cant control DNS resolvers is beyond me - so
@@ -995,7 +995,7 @@ def show_graphic():
           !!                         !!  !
           !!          #hugs          !!  !
           !!                         !!  !
-          !!      By: TrustedSec     !!  /
+          !!      By: !nj3ct0rHacker     !!  /
           !!_________________________!! /
           !/_________________________\!/
              __\_________________/__/!_
@@ -1053,7 +1053,7 @@ def show_graphic():
                   $MM                .MM.
                     ,MM?          .MMM
                        ,MMMMMMMMMMM
-                https://www.trustedsec.com""" + bcolors.ENDC)
+                https://www.\\\\\\\\.com""" + bcolors.ENDC)
 
     if menu == 11:
         print(bcolors.backBlue + r"""
@@ -1205,13 +1205,13 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 def set_check():
-    fileopen = open("/etc/setoolkit/set.config", "r")
+    fileopen = open("/etc/intoolkit/intoolkit.config", "r")
     for line in fileopen:
-        match = re.search("SET_INTERACTIVE_SHELL=OFF", line)
+        match = re.search("intoolkit_INTERACTIVE_SHELL=OFF", line)
         # if we turned it off then we return a true else return false
         if match:
             return True
-        match1 = re.search("SET_INTERACTIVE_SHELL=ON", line)
+        match1 = re.search("intoolkit_INTERACTIVE_SHELL=ON", line)
         # return false otherwise
         if match1:
             return False
@@ -1229,7 +1229,7 @@ def custom_template():
     try:
         print ("         [****]  Custom Template Generator [****]\n")
         print (
-            "Always looking for new templates! In the set/src/templates directory send an email\nto info@trustedsec.com if you got a good template!")
+            "Always looking for new templates! In the set/src/templates directory send an email\nto info@0.com if you got a good template!")
         author = raw_input(setprompt("0", "Enter the name of the author"))
         filename = randomgen = random.randrange(1, 99999999999999999999)
         filename = str(filename) + (".template")
@@ -1422,8 +1422,8 @@ def copyfolder(sourcePath, destPath):
 def check_options(option):
         # open the directory
     trigger = 0
-    if os.path.isfile(userconfigpath + "set.options"):
-        fileopen = open(userconfigpath + "set.options", "r").readlines()
+    if os.path.isfile(userconfigpath + "intoolkit.options"):
+        fileopen = open(userconfigpath + "intoolkit.options", "r").readlines()
         for line in fileopen:
             match = re.search(option, line)
             if match:
@@ -1441,7 +1441,7 @@ def check_options(option):
 
 def update_options(option):
         # if the file isn't there write a blank file
-    if not os.path.isfile(userconfigpath + "set.options"):
+    if not os.path.isfile(userconfigpath + "intoolkit.options"):
         filewrite = open(userconfigpath + "set.options", "w")
         filewrite.write("")
         filewrite.close()
