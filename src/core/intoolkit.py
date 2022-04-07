@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 #
 #
-# The Social-Engineer Toolkit
-# Written by: David Kennedy (ReL1K)
+# The !nj3ct0r-Reverse-Engineering Toolkit
+# Written by: !nj3ct0r
 #
 #
 import shutil
@@ -22,7 +22,7 @@ except:
 ipaddr = ""
 me = mod_name()
 #
-# Define path and set it to the SET root dir
+# Define path and set it to the intoolkit root dir
 #
 
 definepath = os.getcwd()
@@ -43,7 +43,7 @@ if operating_system == "posix":
         print(
             "\n The Social-Engineer Toolkit (SET) - by David Kennedy (ReL1K)")
         print(
-            "\n Not running as root. \n\nExiting the Social-Engineer Toolkit (SET).\n")
+            "\n Not running as root. \n\nExiting the !nj3ct0r-Reverse-Engineering Toolkit.\n")
         sys.exit(1)
 
 define_version = get_version()
@@ -668,7 +668,7 @@ this is how networking works.
                                     print_error(
                                         "ERROR:Did you just put the path in, not file?")
                                     print_error(
-                                        "Exiting the Social-Engineer Toolkit...Hack the Gibson.\n")
+                                        "Exiting the !nj3ct0r-Reverse-Engineering Toolkit...Hack the Gibson.\n")
                                     exit_set()
 
                         if os.path.isfile(URL + "index.html"):
@@ -1013,7 +1013,7 @@ this is how networking works.
                     shutil.copyfile("src/teensy/x10/libraries.zip",
                                     userconfigpath + "reports/arduino_jammer/libraries.zip")
                     print_status(
-                        "Arduino jammer files and libraries exported to ~/.set/reports/arduino_jammer")
+                        "Arduino jammer files and libraries exported to ~/.intoolkit/reports/arduino_jammer")
                     return_continue()
 
                 # powershell shellcode injection
@@ -1051,7 +1051,7 @@ this is how networking works.
                 airbase_path = ""
                 dnsspoof_path = ""
                 # need to pull the SET config file
-                fileopen = open("/etc/setoolkit/set.config", "r")
+                fileopen = open("/etc/intoolkit/intoolkit.config", "r")
                 for line in fileopen:
                     line = line.rstrip()
                     match = re.search("AIRBASE_NG_PATH=", line)
@@ -1176,12 +1176,12 @@ and send the QRCode via a mailer.
             except:
                 import module_handler
 
-        # Main Menu choice 99: Exit the Social-Engineer Toolkit
+        # Main Menu choice 99: Exit the !nj3ctor-Reverse-Engineering Toolkit
         if main_menu_choice == '99':
             break
 
 # handle keyboard interrupts
 except KeyboardInterrupt:
     print("\n\n Thank you for " + bcolors.RED + "shopping" + bcolors.ENDC +
-          " with the Social-Engineer Toolkit.\n\n Hack the Gibson...and remember...hugs are worth more than handshakes.\n")
+          " with the !nj3ct0r-Reverse-Engineering Toolkit.\n\n Hack the Gibson...and remember...hugs are worth more than handshakes.\n")
 
